@@ -11,15 +11,17 @@ function calculateTotal(event) {
   // Prevent the form from submitting
   event.preventDefault();
 
-  // Display the total amount as a decimal
-  totalDisplay.innerText = "Total: $" + total.toFixed(2); // Format number to a fixed number of (2) decimal places
-
   // Get the bill amount and tip percentage from the inputs
-  let bill = billInput.value;
-  let tip = tipSelect.value; 
+  // Convert the input values to numbers using Number()
+  let bill = Number(billInput.value);
+  let tip = Number(tipSelect.value);
 
   // Calculate the total amount
+  // bill * tip / 100 gives the tip amount, add it to the bill
   let total = bill + (bill * tip / 100);
+
+  // Display the total amount as a decimal using toFixed(2)
+  totalDisplay.innerText = `Total: $${total.toFixed(2)}`; // Format number to 2 decimal places
 }
 
 // Function to toggle light/dark mode
