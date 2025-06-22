@@ -26,12 +26,20 @@ function calculateTotal(event) {
 
 // Function to toggle light/dark mode
 function toggleTheme() {
-  if (document.body.className === "dark") {
-    document.body.className = "light";
-    themeToggle.innerText = "Switch to Dark Mode";
+  // Toggle the 'dark' class on the body
+  let isDark = document.body.classList.toggle("dark");
+  // Get the icon inside the button
+  const icon = themeToggle.querySelector("i");
+  // If dark mode is on, update button text and icon
+  if (isDark) {
+    themeToggle.innerText = " Switch to Light Mode";
+    // Add the moon icon back (since innerText removes it)
+    icon.className = "fas fa-sun";
+    themeToggle.prepend(icon);
   } else {
-    document.body.classList.add("dark");
-    themeToggle.innerText = "Switch to Light Mode";
+    themeToggle.innerText = " Switch to Dark Mode";
+    icon.className = "fas fa-moon";
+    themeToggle.prepend(icon);
   }
 }
 
